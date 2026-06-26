@@ -1,147 +1,291 @@
-Skin Cancer Detection Using Deep Learning
+# 🩺 Skin Cancer Detection Using Deep Learning
 
-📌 Project Overview
+## 📌 Overview
 
-Skin Cancer Detection is a Deep Learning-based web application that classifies skin lesions as Benign or Malignant using dermoscopic images. The system assists in the early detection of skin cancer by leveraging Convolutional Neural Networks (CNNs) and Explainable AI techniques.
+**Skin Cancer Detection Using Deep Learning** is a web-based application that leverages **EfficientNetB0 Transfer Learning** to classify dermoscopic skin lesion images as **Benign** or **Malignant**. The project combines **Computer Vision**, **Deep Learning**, and **Explainable AI (Grad-CAM)** to assist in the early detection of skin cancer.
 
-Users can upload a skin lesion image and receive a prediction along with confidence scores and a Grad-CAM heatmap for model interpretability.
+Users can upload a skin lesion image through a simple Flask web interface and receive:
 
----
+* Skin lesion classification
+* Confidence score
+* Malignancy probability
+* Risk level assessment
+* Grad-CAM heatmap for model interpretability
 
-🚀 Features
-
-- Upload skin lesion images (JPEG/PNG)
-- Image preprocessing and enhancement
-- Benign/Malignant classification
-- Malignancy probability prediction
-- Risk level assessment
-- Grad-CAM heatmap visualization
-- User-friendly Flask web interface
+> **Note:** This application is intended for educational and research purposes and should not be used as a substitute for professional medical diagnosis.
 
 ---
 
-🛠️ Technologies Used
+# 🚀 Features
 
-Frontend
-
-- Flask
-
-Machine Learning & Deep Learning
-
-- TensorFlow
-- Keras
-- OpenCV
-- NumPy
-- Matplotlib
-
-Models
-
-- EfficientNetB0
-- ResNet50
-- MobileNetV2
+* Upload skin lesion images (JPG, JPEG, PNG)
+* Automatic image preprocessing
+* Hair artifact removal
+* Image resizing and normalization
+* Data augmentation during training
+* Binary classification (Benign / Malignant)
+* Confidence score prediction
+* Malignancy probability estimation
+* Risk level assessment
+* Grad-CAM explainability visualization
+* Responsive Flask web interface with Bootstrap 5
 
 ---
 
-📂 Dataset
+# 🛠️ Technologies Used
 
-Dataset: HAM10000 (Human Against Machine with 10000 Training Images)
+## Frontend
 
-Dataset Features
+* Flask
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
 
-- Skin Lesion Images
-- Lesion Type
-- Benign/Malignant Labels
+## Backend
 
----
+* Python
 
-⚙️ System Modules
+## Deep Learning & Computer Vision
 
-1. Image Upload
-
-Accepts dermoscopic images through the Flask interface.
-
-2. Image Preprocessing
-
-- Resize images to 224×224
-- Normalize pixel values
-- Data augmentation
-- Hair artifact removal
-
-3. Model Prediction
-
-Generates predictions using a fine-tuned CNN model.
-
-4. Result Display
-
-Shows:
-
-- Classification Result
-- Confidence Score
-- Risk Level
-
-5. Explainability Report
-
-Generates a Grad-CAM heatmap highlighting important regions in the image.
+* TensorFlow
+* Keras
+* OpenCV
+* NumPy
+* Pandas
+* Matplotlib
+* Scikit-Learn
 
 ---
 
-🔄 Workflow
+# 🤖 Deep Learning Models
 
-1. Upload Image
-2. Preprocess Image
-3. Run CNN Model
-4. Generate Prediction
-5. Display Results
-6. Generate Grad-CAM Visualization
+The project supports transfer learning using modern CNN architectures such as:
 
----
+* EfficientNetB0 *(Primary Model)*
+* ResNet50
+* MobileNetV2
 
-📊 Evaluation Metrics
-
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- AUC-ROC
+Current implementation uses **EfficientNetB0** for binary skin lesion classification.
 
 ---
 
-▶️ How to Run
+# 📂 Dataset
 
-Install Dependencies
+**Dataset:** HAM10000 (Human Against Machine with 10,000 Training Images)
 
+### Dataset Includes
+
+* Dermoscopic skin lesion images
+* Lesion categories
+* Benign/Malignant labels
+
+---
+
+# 📁 Project Structure
+
+```text
+Skin-Cancer-Detection/
+│
+├── app.py                    # Flask application
+├── train.py                  # Model training
+├── predict.py                # Prediction script
+├── gradcam.py                # Grad-CAM visualization
+├── prepare_dataset.py        # Dataset preprocessing
+├── config.py                 # Configuration settings
+├── utils.py                  # Utility functions
+├── requirements.txt
+├── README.md
+│
+├── dataset/
+│   ├── train/
+│   ├── validation/
+│   └── test/
+│
+├── models/
+│   └── efficientnet_model.h5
+│
+├── static/
+│   ├── uploads/
+│   ├── gradcam/
+│   └── css/
+│
+└── templates/
+    ├── index.html
+    └── result.html
+```
+
+---
+
+# ⚙️ System Modules
+
+## 1. Image Upload
+
+Users upload dermoscopic skin lesion images through the web interface.
+
+## 2. Image Preprocessing
+
+The uploaded image undergoes several preprocessing steps:
+
+* Resize to **224 × 224**
+* Pixel normalization
+* Hair artifact removal
+* Image enhancement
+
+During training:
+
+* Data augmentation
+* Rotation
+* Flipping
+* Zooming
+
+## 3. Model Prediction
+
+The preprocessed image is passed through the trained **EfficientNetB0** model to generate predictions.
+
+## 4. Result Display
+
+The application displays:
+
+* Predicted Class
+* Confidence Score
+* Malignancy Probability
+* Risk Level
+
+## 5. Explainability (Grad-CAM)
+
+A Grad-CAM heatmap is generated to highlight image regions that influenced the model's prediction, improving transparency and interpretability.
+
+---
+
+# 🔄 Workflow
+
+```text
+Upload Image
+      │
+      ▼
+Image Preprocessing
+      │
+      ▼
+EfficientNetB0 Prediction
+      │
+      ▼
+Confidence & Risk Assessment
+      │
+      ▼
+Grad-CAM Heatmap Generation
+      │
+      ▼
+Display Results
+```
+
+---
+
+# 📊 Model Evaluation
+
+The model is evaluated using standard classification metrics:
+
+* Accuracy
+* Precision
+* Recall
+* F1-Score
+* AUC-ROC
+
+---
+
+# ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/Skin-Cancer-Detection.git
+```
+
+Move into the project directory:
+
+```bash
+cd Skin-Cancer-Detection
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-Run Application
+---
 
+# 📦 Prepare Dataset
+
+```bash
+python prepare_dataset.py
+```
+
+---
+
+# 🏋️ Train the Model
+
+```bash
+python train.py
+```
+
+The trained model will be saved in the **models/** directory.
+
+---
+
+# ▶️ Run the Application
+
+```bash
 python app.py
+```
 
-Open Browser
+Open your browser and visit:
 
+```text
 http://127.0.0.1:5000
+```
 
 ---
 
-🎯 Expected Outcome
+# 🎯 Expected Outcomes
 
-- Accurate skin lesion classification
-- Real-time prediction results
-- Improved diagnostic support
-- Explainable AI-based decision making
-- Easy-to-use web interface
-
----
-
-🔮 Future Enhancements
-
-- Multi-class lesion classification
-- Mobile application integration
-- Cloud deployment
-- Clinical decision support features
-- Advanced explainability methods
+* Accurate skin lesion classification
+* Real-time prediction results
+* Explainable AI-assisted decision making
+* Improved support for early skin cancer detection
+* User-friendly and responsive web interface
 
 ---
 
-📖 Conclusion
+# 🔮 Future Enhancements
 
-This project demonstrates the application of Deep Learning and Computer Vision in healthcare. By combining accurate skin lesion classification with explainable AI, the system provides a practical solution for assisting in the early detection of skin cancer while offering a seamless user experience# skin-cancer-detection
+* Multi-class skin lesion classification
+* Clinical decision support features
+* Cloud deployment (AWS/Azure/GCP)
+* Mobile application integration
+* User authentication
+* Database integration
+* Patient history management
+* Advanced Explainable AI techniques
+* Model optimization for edge devices
+
+---
+
+# 📖 Conclusion
+
+This project demonstrates the application of **Deep Learning**, **Transfer Learning**, and **Computer Vision** in healthcare. By combining an EfficientNetB0-based skin lesion classifier with **Grad-CAM Explainable AI**, the system provides an accessible and interpretable tool for assisting in the early detection of skin cancer.
+
+Although intended primarily for educational and research purposes, the project showcases how AI can support healthcare professionals by providing accurate predictions along with visual explanations that enhance model transparency.
+
+---
+
+# 👨‍💻 Author
+
+N.chandrika
+
+---
+
+# 📄 License
+
+This project is intended for educational and research purposes. Please ensure compliance with the HAM10000 dataset license and applicable healthcare regulations before using or distributing the project.
+
